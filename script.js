@@ -26,14 +26,14 @@ function updateClickText(count) {
 }
 
 // Get the current count when page loads
-fetch('http://localhost:3000/count')
+fetch("https://your-render-backend.com/some-endpoint")
   .then(res => res.json())
   .then(data => updateClickText(data.count));
 
 // When the button is clicked, increment and update
 button.addEventListener("click", () => {
     playSound();
-    fetch('http://localhost:3000/increment', {
+    fetch("https://your-render-backend.com/some-endpoint", {
     method: 'POST',
   })
     .then(res => res.json())
