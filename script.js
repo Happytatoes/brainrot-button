@@ -26,14 +26,14 @@ function updateClickText(count) {
 }
 
 // Get the current count when page loads
-fetch("https://your-render-backend.com/some-endpoint")
+fetch("https://brainrot-button-backend.onrender.com/count")
   .then(res => res.json())
   .then(data => updateClickText(data.count));
 
 // When the button is clicked, increment and update
 button.addEventListener("click", () => {
     playSound();
-    fetch("https://your-render-backend.com/some-endpoint", {
+    fetch("https://brainrot-button-backend.onrender.com/increment", {
     method: 'POST',
   })
     .then(res => res.json())
