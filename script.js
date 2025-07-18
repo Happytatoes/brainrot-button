@@ -1,12 +1,7 @@
-const subtext = document.getElementById("subtext");
-var number = 0;
 var random; 
 var audio;
 
-function increment () {
-    number++;
-    subtext.innerHTML = "has been clicked " + number + " times";
-    
+function playSound () {
     random = Math.random();
     if (random < 0.9) {
         audio = document.getElementById("audio1"); 
@@ -21,3 +16,26 @@ function increment () {
     audio.play(); 
     audio.currentTime = 0;
 }
+
+const textElement = document.getElementById("subtext");
+const button = document.getElementById("brainrotbutton");
+
+// Update the text with the current count
+function updateClickText(count) {
+  textElement.textContent = `This button has been clicked ${count} times`;
+}
+
+// Get the current count when page loads
+fetch('http://localhost:3000/count')
+  .then(res => res.json())
+  .then(data => updateClickText(data.count));
+
+// When the button is clicked, increment and update
+button.addEventListener("click", () => {
+    playSound();
+    fetch('http://localhost:3000/increment', {
+    method: 'POST',
+  })
+    .then(res => res.json())
+    .then(data => updateClickText(data.count));
+});
