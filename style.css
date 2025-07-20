@@ -42,6 +42,30 @@
     padding-top: 50px;
 }
 
+#sitelink {
+  color: #6af;
+}
+
+#visit-count {
+  color: white;
+  font-family: Helvetica;
+  text-shadow: 2px;
+  padding: 25px;
+  font-size: 25px;
+  margin: auto;
+  text-align: center;
+}
+
+#promo {
+  color: white;
+  font-family: Helvetica;
+  text-shadow: 2px;
+  padding: 25px;
+  font-size: 25px;
+  margin: auto;
+  text-align: center;
+}
+
 .button-82-pushable {
     display: flex;
     margin: auto;

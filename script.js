@@ -22,7 +22,7 @@ const button = document.getElementById("brainrotbutton");
 
 // Update the text with the current count
 function updateClickText(count) {
-  textElement.textContent = `This button has been clicked ${count} times`;
+  textElement.textContent = `has been clicked ${count} times`;
 }
 
 // Get the current count when page loads
@@ -38,4 +38,12 @@ button.addEventListener("click", () => {
   })
     .then(res => res.json())
     .then(data => updateClickText(data.count));
+});
+
+//fetch and display visit count
+fetch('https://your-render-backend-url.com/visit')
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("visit-count").textContent =
+      `This happytatoes.com site has been visited ${data.visitors} times`;
 });
