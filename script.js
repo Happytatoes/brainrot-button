@@ -38,7 +38,12 @@ button.addEventListener("click", () => {
 // Get the current count when page loads
 fetch("https://brainrot-button-backend.onrender.com/count")
 	.then(res => res.json())
-	.then(data => updateClickText(data.count));
+	.then(data => {
+	  console.log("Count response:", data); // <- check this
+	  updateClickText(data.count);
+	})
+	.catch(err => console.error("Count fetch error:", err));
+  
 
 //incriment visitor count
 fetch("https://brainrot-button-backend.onrender.com/addvisitor", {
@@ -50,6 +55,6 @@ fetch('https://brainrot-button-backend.onrender.com/visitors')
 	.then(res => res.json())
 	.then(data => {
 	document.getElementById("visit-count").textContent =
-		`This happytatoes.com site has been visited ${data.visitors} times`;
+		`This happytatoes.com site has been visited ${data.visits} times`;
 });
 
