@@ -46,9 +46,6 @@
 	padding-top: 50px;
 }
 
-#sitelink {
-	color: #6af;
-}
 
 #bottomtext {
 	color: white;
@@ -61,7 +58,7 @@
 }
 
 #promo {
-	color: white;
+	color: #6af;
 	font-family: Helvetica;
 	text-shadow: 2px;
 	padding: 25px;

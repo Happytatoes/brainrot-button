@@ -56,8 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	  .then(res => res.json())
 	  .then(data => {
 		console.log("Visitors fetch:", data); // Debug log
-		document.getElementById("visit-count").textContent =
-		  `This happytatoes.com site has been visited ${data.visitors} times`;
+		document.getElementById("visit-count").textContent = data.visitors;
 	  })
 	  .catch(err => console.error("Visitor fetch error:", err));
   });
