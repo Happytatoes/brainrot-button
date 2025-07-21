@@ -58,13 +58,14 @@
 }
 
 #promo {
-	color: #6af;
+	color: white;
 	font-family: Helvetica;
 	text-shadow: 2px;
 	padding: 25px;
-	font-size: 25px;
-	margin: auto;
+	padding-top: 50px;
+	font-size: 17px;
 	text-align: center;
+	display: block;
 }
 
 .button-82-pushable {
