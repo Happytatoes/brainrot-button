@@ -17,9 +17,52 @@ function playSound() {
 	audio.currentTime = 0;
 }
 
-const textElement = document.getElementById("subtext");
-const button = document.getElementById("brainrotbutton");
+document.addEventListener('DOMContentLoaded', () => {
+	// All your fetches and event listeners go here
+  
+	const textElement = document.getElementById("subtext");
+	const button = document.getElementById("brainrotbutton");
+  
+	function updateClickText(count) {
+	  textElement.textContent = `has been clicked ${count} times`;
+	}
+  
+	button.addEventListener("click", () => {
+	  playSound();
+	  fetch("https://brainrot-button-backend.onrender.com/increment", {
+		method: 'POST',
+	  })
+		.then(res => res.json())
+		.then(data => updateClickText(data.count));
+	});
+  
+	fetch("https://brainrot-button-backend.onrender.com/count")
+	  .then(res => res.json())
+	  .then(data => updateClickText(data.count))
+	  .catch(err => console.error("Count fetch error:", err));
+  
+	// Increment visitor
+	fetch("https://brainrot-button-backend.onrender.com/addvisitor", {
+	  method: 'POST'
+	})
+	  .then(res => res.json())
+	  .then(data => {
+		console.log("Visitor increment response:", data);
+	  })
+	  .catch(err => console.error("Visitor increment error:", err));
+  
+	// Fetch and display total visits
+	fetch('https://brainrot-button-backend.onrender.com/visitors')
+	  .then(res => res.json())
+	  .then(data => {
+		console.log("Visitors fetch:", data); // Debug log
+		document.getElementById("visit-count").textContent =
+		  `This happytatoes.com site has been visited ${data.visitors} times`;
+	  })
+	  .catch(err => console.error("Visitor fetch error:", err));
+  });
 
+/*
 // Update the text with the current count
 function updateClickText(count) {
 	textElement.textContent = `has been clicked ${count} times`;
@@ -54,7 +97,6 @@ fetch("https://brainrot-button-backend.onrender.com/addvisitor", {
 fetch('https://brainrot-button-backend.onrender.com/visitors')
 	.then(res => res.json())
 	.then(data => {
-	document.getElementById("visit-count").textContent =
-		`This happytatoes.com site has been visited ${data.visits} times`;
+	document.getElementById("visit-count").textContent = data.visitors;
 });
-
+*/
